@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-@font-face {
-    font-family: 'REZ';
-    src: url('/img/REZ.ttf') format('truetype');
-}
 
 * {
     background-color: transparent;
@@ -23,7 +19,6 @@ body {
     flex-direction: column;
     position: relative;
     z-index: 1;
-    cursor: none;
 }
 
 /* Background video */
@@ -38,27 +33,12 @@ body {
     background-color: #041F3D;
 }
 
-.sparkle {
-    position: fixed;
-    z-index: 6;
-    opacity: 0.5;
-    pointer-events: none;
-}
-
 h1, h2 {
     font-family: 'Montserrat', 'Roboto', sans-serif;
     color: white; /* Adjust color to stand out against the video */
 }
 
-.logo {
-    height: 400px;
-    width: 400px;
-    margin: -100px;
-    filter: none; /* Make sure no CSS filter is applied */
-    opacity: 1; /* Ensure full opacity */
-}
-
-.icon {
+img {
     height: 200px;
     width: 200px;
     filter: none; /* Make sure no CSS filter is applied */

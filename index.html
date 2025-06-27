@@ -3,45 +3,881 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sharkfin - journey to financial zen</title>
-    <link rel="icon" type="image/png" href="/img/favicon.png?">
-    <link rel="stylesheet" href="styles.css">
+    <title>SharkFin - Bite-Sized Financial Wisdom for Gen Z</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo img {
+            max-width: 75px;
+            max-height: 75px;
+        }
+
+        .shark-emoji {
+            font-size: 2rem;
+            animation: swim 3s ease-in-out infinite;
+        }
+
+        @keyframes swim {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(5px) rotate(-5deg); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 100px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="80" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="60" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subheading {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            opacity: 0.95;
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .primary-button {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
+        }
+
+        .secondary-button {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            padding: 16px 34px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .secondary-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        .sammy-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        
+
+        .sammy-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            animation: bounce 2s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(54, 209, 220, 0.3);
+        }
+
+        .sammy-avatar img {
+            max-width: 180px;
+            max-height: 180px;
+            border-radius: 50%;
+            margin-right: 15px;
+            padding: 10px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .speech-bubble {
+            background: white;
+            color: #333;
+            padding: 20px 25px;
+            border-radius: 20px;
+            position: relative;
+            max-width: 300px;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 10px solid transparent;
+            border-right-color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 40px 40px 0 0;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+            padding: 80px 0px 0px 0px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+            padding: 40px 30px;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+            border-color: #037EFF;
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Sammy Section */
+        .sammy-section {
+            background: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+            padding: 100px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sammy-section::before {
+            content: '🌊';
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.1;
+            top: 20%;
+            left: 10%;
+            animation: wave 4s ease-in-out infinite;
+        }
+
+        .sammy-section::after {
+            content: '🐠';
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.15;
+            bottom: 20%;
+            right: 15%;
+            animation: swim 5s ease-in-out infinite reverse;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg); }
+        }
+
+        .sammy-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .sammy-text h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .sammy-text p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .sammy-visual {
+            text-align: center;
+            position: relative;
+        }
+
+        .big-sammy {
+            font-size: 12rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+        }
+
+        .big-sammy img {
+            border-radius: 50%;
+            max-width: 250px;
+            max-height: 250px;
+        }
+
+        .chat-bubbles {
+            position: absolute;
+            top: 7∂∂∂0%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .chat-bubble {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 20px;
+            margin: 10px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: popIn 2s ease-in-out infinite alternate;
+        }
+
+        .chat-bubble:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0.7; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: #f8f9ff;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .final-cta h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .final-cta p {
+            font-size: 1.4rem;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sammy-showcase {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .speech-bubble::before {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sammy-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .big-sammy {
+                font-size: 8rem;
+            }
+
+            .final-cta h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Video as background -->
-    <video autoplay muted loop playsinline id="myVideo">
-        <source src="img/ocean-backdrop.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <img src="img/Logo-02-removebg-preview.png" />
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#sammy">Meet Sammy</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+                <a href="#" class="cta-button">Get Started</a>
+            </nav>
+        </div>
+    </header>
 
-    <!-- <div class="cursor"></div> -->
-    
-    <!-- Logo and content -->
-    <img class="logo" src="img/logo-bg-removed.png" alt="logo">
-    <h1>journey to financial zen</h1>
-    <h2>coming soon...</h2>
-    
-    <!-- Social media links -->
-    <div class="social-media-links">
-        <a href="https://www.linkedin.com/company/sharkfin-ai" target="_blank">
-            <img src="img/linkedin.png" alt="LinkedIn">
-        </a>
-        <a href="https://x.com/sharkfinhq" target="_blank">
-            <img class="icon" src="img/x.png" alt="Follow us on X!">
-        </a>
-        <a href="mailto:support@sharkfin.ai" target="_blank">
-            <img class="icon" src="img/email.png" alt="Send us an email!">   
-        </a>
-        <!--<a href="https://facebook.com/sharkfin_travel" target="_blank">
-            <img src="img/facebook.png" alt="facebook">
-        </a>
-        <a href="https://www.instagram.com/sharkfin_travel/" target="_blank">
-            <img src="img/instagram.png" alt="Instagram">
-        </a>
-        <a href="https://pinterest.com/sharkfin_travel" target="_blank">
-            <img src="img/pinterest.png" alt="pinterest">
-        </a>-->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="subheading">🚀 For Gen Z, By Gen Z</div>
+                <h1>Bite-Sized Financial Wisdom</h1>
+                <p>Learn money management the fun way with Sammy Shark and AI-powered tools that actually get you. No boring lectures, just real financial education for the next generation.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="primary-button">Coming Soon</a>
+                    <a href="#" class="secondary-button">Meet Sammy 🦈</a>
+                </div>
+                
+                <div class="sammy-showcase">
+                    <div class="sammy-avatar">
+                        <img src="Samuel Shark.png" />
+                    </div>
+                    <div class="speech-bubble">
+                        "Hey! Ready to level up your money game? I'm here to help! 💪"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <section class="features" id="features">
+            <div class="container">
+                <h2>Why Gen Z Loves SharkFin</h2>
+                <p class="features-subtitle">Financial education that doesn't suck, plus AI tools that actually help you make smart money moves.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI Financial Advisor</h3>
+                        <p>Chat with our AI about credit cards, loans, investing, and budgeting. Get personalized advice that makes sense for your situation, not your parents'.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Learn with Sammy</h3>
+                        <p>Our mascot Sammy Shark breaks down complex financial concepts into bite-sized lessons. From credit scores to crypto, learn it all without the headaches.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Ask Anything</h3>
+                        <p>"Should I get this credit card?" "How do I start investing?" Ask our chatbot the money questions you're too embarrassed to ask anyone else.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile-First Design</h3>
+                        <p>Built for your phone because that's where you live. Clean interface, quick answers, and financial tools that work the way you do.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>No Judgment Zone</h3>
+                        <p>Made mistakes with money? We've all been there. Our AI gives advice without the side-eye, and Sammy keeps things positive and encouraging.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Action-Oriented</h3>
+                        <p>Don't just learn about finances—take action. Get step-by-step guides to apply for that first credit card, open a savings account, or start investing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sammy-section" id="sammy">
+            <div class="container">
+                <div class="sammy-content">
+                    <div class="sammy-text">
+                        <h2>Meet Sammy Shark</h2>
+                        <p>Your friendly financial guru who makes money management actually fun. Sammy breaks down everything from budgeting basics to investment strategies in a way that clicks.</p>
+                        <p>Whether you're figuring out student loans, wanting to build credit, or curious about cryptocurrency, Sammy's got your back with easy-to-understand explanations and actionable advice.</p>
+                        <a href="#" class="primary-button">Chat with Sammy</a>
+                    </div>
+                    <div class="sammy-visual">
+                        <div class="big-sammy">
+                            <img src="Samuel Shark.png" />
+                        </div>
+                        <div class="chat-bubbles">
+                            <div class="chat-bubble">"Let's talk about your goals!"</div>
+                            <div class="chat-bubble">"I'll help you get there! 💪"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Gen Z Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Questions Answered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Feel More Confident</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4.9★</div>
+                        <div class="stat-label">App Store Rating</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="container">
+                <h2>Ready to Level Up Your Money Game? 🚀</h2>
+                <p>Join thousands of Gen Z users who've already started their financial journey with SharkFin. It's free to start, and your future self will thank you!</p>
+                <a href="#" class="primary-button">Download SharkFin Free</a>
+            </div>
+        </section>
     </div>
-    <script src="script.js"></script>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🦈 SharkFin</h3>
+                    <p>Making financial education accessible, fun, and relevant for Gen Z. Swim with us towards financial freedom!</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><a href="#">AI Financial Advisor</a></li>
+                        <li><a href="#">Learning with Sammy</a></li>
+                        <li><a href="#">Budgeting Tools</a></li>
+                        <li><a href="#">Investment Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">TikTok</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Discord</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SharkFin. All rights reserved. Made with 💙 for Gen Z</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%)';
+                header.style.backdropFilter = 'blur(20px)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'transparent';
+                header.style.backdropFilter = 'none';
+                header.style.boxShadow = 'none';
+            }
+            
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add some interactive elements
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.02) rotate(-1deg)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+            });
+        });
+
+        // Sammy interaction
+        document.querySelector('.big-sammy').addEventListener('click', () => {
+            const sammy = document.querySelector('.big-sammy');
+            sammy.style.transform = 'scale(1.1) rotate(10deg)';
+            setTimeout(() => {
+                sammy.style.transform = 'scale(1) rotate(0deg)';
+            }, 300);
+        });
+    </script>
 </body>
 </html>

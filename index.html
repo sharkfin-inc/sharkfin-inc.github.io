@@ -138,6 +138,17 @@
         position: relative; 
       }
       
+      /* Ensure hero elements start hidden for fade-in animation */
+      .hero-content {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      
+      .app-mockups {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      
       /* Prevent layout shift */
       img { height: auto; }
       .mockup-1, .mockup-2 { aspect-ratio: 300 / 600; }

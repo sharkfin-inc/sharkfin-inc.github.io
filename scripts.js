@@ -61,6 +61,53 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Trigger hero animations after page is fully loaded
+window.addEventListener("load", () => {
+  const heroContent = document.querySelector(".hero-content");
+  const appMockups = document.querySelector(".app-mockups");
+  
+  // Check if user prefers reduced motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  if (prefersReducedMotion) {
+    // Show elements immediately without animation
+    if (heroContent) {
+      heroContent.style.opacity = "1";
+      heroContent.style.transform = "translateY(0)";
+    }
+    if (appMockups) {
+      appMockups.style.opacity = "1";
+      appMockups.style.transform = "translateY(0)";
+    }
+  } else {
+    // Ensure elements are properly hidden initially
+    if (heroContent) {
+      heroContent.style.opacity = "0";
+      heroContent.style.transform = "translateY(30px)";
+    }
+    if (appMockups) {
+      appMockups.style.opacity = "0";
+      appMockups.style.transform = "translateY(40px)";
+    }
+    
+    // Start hero content animation with a short delay
+    setTimeout(() => {
+      if (heroContent) {
+        heroContent.style.opacity = "1";
+        heroContent.style.transform = "translateY(0)";
+      }
+    }, 400);
+    
+    // Start mockup animation with a longer delay for staggered effect
+    setTimeout(() => {
+      if (appMockups) {
+        appMockups.style.opacity = "1";
+        appMockups.style.transform = "translateY(0)";
+      }
+    }, 900);
+  }
+});
+
 // Header scroll effect
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");

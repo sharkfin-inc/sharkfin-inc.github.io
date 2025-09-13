@@ -76,6 +76,8 @@
 
         .nav-links {
             display: flex;
+            margin-top: auto;
+            margin-bottom: auto;
             margin-left: auto;
             margin-right: 20px;
             list-style: none;
@@ -117,7 +119,6 @@
             box-shadow: 0 1.2px 0 0.4px rgba(0, 0, 0, 0.25);
             color: #1a1a1a;
             /* Button */
-            font-family: "Raleway", sans-serif;
             font-size: 17px;
             font-style: normal;
             font-weight: 700;
@@ -1219,5 +1220,143 @@
 
             .final-cta p {
                 font-size: 1rem;
+            }
+        }
+
+        /* Form Drawer Styles */
+        .form-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10001;
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-end;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .form-drawer-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            cursor: pointer;
+        }
+
+        .form-drawer-content {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            height: 100%;
+            background: #FFDF98;
+            box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-drawer-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid rgba(4, 31, 61, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-drawer-header h3 {
+            color: #041F3D;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .form-drawer-close {
+            background: none;
+            border: none;
+            color: #041F3D;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .form-drawer-close:hover {
+            background: rgba(4, 31, 61, 0.1);
+            transform: scale(1.1);
+        }
+
+        .form-drawer-close:focus {
+            outline: 2px solid #041F3D;
+            outline-offset: 2px;
+            background: rgba(4, 31, 61, 0.1);
+        }
+
+        .form-drawer-body {
+            flex: 1;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .form-drawer-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        /* Button styles - ensure buttons work like the original anchor tags */
+        button.cta-button {
+            cursor: pointer;
+        }
+
+        button.cta-button:hover {
+            background: var(--Deep-Navy, rgb(244, 210, 66, 0.9));
+            box-shadow: 0 2.4px 0 0.4px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Mobile responsive drawer */
+        @media (max-width: 768px) {
+            .form-drawer-content {
+                width: 100%;
+                max-width: none;
+            }
+            
+            .form-drawer-header {
+                padding: 15px 20px;
+            }
+            
+            .form-drawer-header h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-drawer-header {
+                padding: 12px 16px;
+            }
+            
+            .form-drawer-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .form-drawer-close {
+                width: 36px;
+                height: 36px;
+                font-size: 1.3rem;
             }
         }

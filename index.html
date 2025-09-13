@@ -17,7 +17,6 @@
     <!-- Preload critical images for faster loading -->
     <link rel="preload" href="assets/images/logo-041f3d.svg" as="image">
     <link rel="preload" href="assets/images/mobile-mockup-4.png" as="image">
-    <link rel="preload" href="assets/images/mobile-mockup-2.png" as="image">
     
     <link
       rel="icon"
@@ -26,39 +25,12 @@
       sizes="any"
     />
     
-    <!-- Apple Touch Icons for iOS home screen -->
-    <link rel="apple-touch-icon" href="/assets/icons/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="167x167" href="/assets/icons/favicon.svg" />
-    
-    <!-- iOS web app configuration -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Sharkfin" />
-    
-    <!-- Preload critical CSS -->
-    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.css"></noscript>
-    
-    <!-- Load CSS asynchronously -->
-    <script>
-      !function(e){"use strict";var t=function(t,n,r){var o,i=e.document,s=i.createElement("link");if(n)o=n;else{var a=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=a[a.length-1]}var d=i.styleSheets;s.rel="stylesheet",s.href=t,s.media="only x",o.parentNode.insertBefore(s,n?o:o.nextSibling);var l=function(e){for(var t=s.href,n=d.length;n--;)if(d[n].href===t)return e();setTimeout(function(){l(e)})};return s.addEventListener&&s.addEventListener("load",r),s.onloadcssdefined=l,l(function(){s.media=r||"all"}),s};"undefined"!=typeof module?module.exports=t:e.loadCSS=t}(this);
-      loadCSS("styles.css");
-    </script>
-    
-    <!-- Optimize Font Awesome loading -->
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
-      media="print" onload="this.media='all'"
     />
-    <noscript>
-      <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        rel="stylesheet"
-      />
-    </noscript>
     
     <!-- Defer JavaScript loading for better performance -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
@@ -195,10 +167,9 @@
           <div class="subheading">🏊 Join Sammy on the Journey</div>
           <h1>Quick Lessons.<br />Real Results.</h1>
           <p>
-            Sharkfin makes learning about money simple, fun, and gamified. With
-            AI-powered tools and Sammy the Shark by your side, you’ll tackle
-            budgeting, retirement, and investing — the real-world money lessons
-            no one taught us.
+            Sharkfin makes money simple and fun. 
+            With AI tools and Sammy the Shark, you’ll learn budgeting, saving, 
+            and investing. Lessons no one taught us.
           </p>
           <div class="hero-buttons">
             <a href="https://forms.gle/7hQhg99z3EK8ESwm6" target="_blank" class="cta-button" aria-label="Join the Waitlist (opens in new tab)">Join the Waitlist</a>
@@ -631,19 +602,5 @@
     </div>
 
     <script src="scripts.js" defer></script>
-    
-    <!-- Service Worker for caching -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/sw.js')
-            .then(function(registration) {
-              console.log('ServiceWorker registration successful');
-            }, function(err) {
-              console.log('ServiceWorker registration failed: ', err);
-            });
-        });
-      }
-    </script>
   </body>
 </html>

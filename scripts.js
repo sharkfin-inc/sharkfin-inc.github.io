@@ -215,3 +215,73 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// Form Drawer functionality
+function openFormDrawer() {
+  const drawer = document.getElementById('form-drawer');
+  const iframe = document.getElementById('waitlist-form');
+  
+  // Show the drawer with animation
+  drawer.style.display = 'flex';
+  drawer.style.opacity = '0';
+  
+  // Force a reflow to ensure the display change is applied
+  drawer.offsetHeight;
+  
+  // Animate in
+  drawer.style.transition = 'opacity 0.3s ease';
+  drawer.style.opacity = '1';
+  
+  // Animate the drawer content from the right
+  const drawerContent = drawer.querySelector('.form-drawer-content');
+  drawerContent.style.transform = 'translateX(100%)';
+  drawerContent.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+  
+  // Trigger the slide-in animation
+  setTimeout(() => {
+    drawerContent.style.transform = 'translateX(0)';
+  }, 10);
+  
+  // Load the embedded form if not already loaded
+  if (!iframe.src.includes('embedded=true')) {
+    iframe.src = 'https://docs.google.com/forms/d/e/1FAIpQLSeB-hsHuP8JsoD8YaaEsCsdPRcygKHoUkbzLEdv_KPaHfqQ9A/viewform?usp=dialog';
+  }
+  
+  // Prevent background scrolling
+  document.body.style.overflow = 'hidden';
+  
+  // Focus management for accessibility
+  setTimeout(() => {
+    drawer.querySelector('.form-drawer-close').focus();
+  }, 350);
+}
+
+function closeFormDrawer() {
+  const drawer = document.getElementById('form-drawer');
+  const drawerContent = drawer.querySelector('.form-drawer-content');
+  
+  // Animate out
+  drawerContent.style.transform = 'translateX(100%)';
+  drawer.style.opacity = '0';
+  
+  // Hide after animation completes
+  setTimeout(() => {
+    drawer.style.display = 'none';
+    drawer.style.transition = '';
+    drawerContent.style.transition = '';
+    drawerContent.style.transform = '';
+  }, 300);
+  
+  // Restore background scrolling
+  document.body.style.overflow = 'auto';
+}
+
+// Close drawer on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const drawer = document.getElementById('form-drawer');
+    if (drawer && drawer.style.display !== 'none') {
+      closeFormDrawer();
+    }
+  }
+});

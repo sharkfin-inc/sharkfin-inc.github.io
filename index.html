@@ -32,8 +32,22 @@
       rel="stylesheet"
     />
     
+    <!-- Ant Design CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/antd@5.12.8/dist/reset.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/antd@5.12.8/dist/antd.min.css"
+      rel="stylesheet"
+    />
+    
     <!-- Defer JavaScript loading for better performance -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <!-- Ant Design JavaScript -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/antd@5.12.8/dist/antd.min.js" defer></script>
     
     <!-- Critical CSS for above-the-fold content -->
     <style>
@@ -149,7 +163,7 @@
             <li><a href="#sammy">Meet Sammy</a></li>
             <li><a href="#team">Team</a></li>
           </ul>
-          <a href="https://forms.gle/7hQhg99z3EK8ESwm6" target="_blank" class="cta-button nav" aria-label="Join the Waitlist (opens in new tab)">Join the Waitlist</a>
+          <button class="cta-button nav" onclick="openFormDrawer()" aria-label="Join the Waitlist">Join the Waitlist</button>
         </nav>
       </div>
     </header>
@@ -172,7 +186,7 @@
             and investing. Lessons no one taught us.
           </p>
           <div class="hero-buttons">
-            <a href="https://forms.gle/7hQhg99z3EK8ESwm6" target="_blank" class="cta-button" aria-label="Join the Waitlist (opens in new tab)">Join the Waitlist</a>
+            <button class="cta-button" onclick="openFormDrawer()" aria-label="Join the Waitlist">Join the Waitlist</button>
             <!-- <a href="#" class="secondary-button">Learn More</a> -->
           </div>
         </div>
@@ -390,7 +404,7 @@
               even sooner? Select the Beta Test option in the form and you could
               help shape Sharkfin before it goes live. Spots are limited.
             </p>
-            <a href="https://forms.gle/7hQhg99z3EK8ESwm6" target="_blank" class="cta-button" aria-label="Join the Waitlist (opens in new tab)">Join the Waitlist</a>
+            <button class="cta-button" onclick="openFormDrawer()" aria-label="Join the Waitlist">Join the Waitlist</button>
           </div>
         </div>
       </section>
@@ -597,6 +611,32 @@
             For questions about these Terms of Use, contact us at
             hello@sharkfin.ai.
           </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drawer for Google Form -->
+    <div id="form-drawer" class="form-drawer" style="display: none;">
+      <div class="form-drawer-overlay" onclick="closeFormDrawer()"></div>
+      <div class="form-drawer-content">
+        <div class="form-drawer-header">
+          <h3>Join the Waitlist</h3>
+          <button class="form-drawer-close" onclick="closeFormDrawer()" aria-label="Close form">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="form-drawer-body">
+          <iframe
+            id="waitlist-form"
+            title="Sharkfin Waitlist Form"
+            src="https://forms.gle/9v6Ehs4EdzKTWizR8"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            loading="lazy"
+          >
+            Loading form...
+          </iframe>
         </div>
       </div>
     </div>

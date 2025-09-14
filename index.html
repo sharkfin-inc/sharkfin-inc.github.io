@@ -324,7 +324,7 @@
                 comes in. Ask any financial question and get straightforward,
                 detailed answers that build on what Sammy’s teaching you.
               </p>
-              <a href="#" class="secondary-button">Ask DeepDive</a>
+              <a href="#" class="secondary-button" onclick="openChatWidget()" aria-label="Open DeepDive AI Chat">Ask DeepDive</a>
             </div>
             <div class="sammy-visual">
               <div class="big-sammy">
@@ -622,6 +622,57 @@
             For questions about these Terms of Use, contact us at
             hello@sharkfin.ai.
           </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DeepDive Chat Widget -->
+    <div id="chat-widget" class="chat-widget">
+      <!-- Chat Window -->
+      <div id="chat-window" class="chat-window" role="dialog" aria-labelledby="chat-title" aria-hidden="true">
+        <div class="chat-header">
+          <div class="chat-header-info">
+            <h3 id="chat-title">Ask DeepDive AI</h3>
+            <p class="chat-status">Online</p>
+          </div>
+          <button id="chat-minimize" class="chat-minimize-btn" aria-label="Minimize chat">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button id="chat-close" class="chat-close-btn" aria-label="Close chat">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="chat-body">
+          <div id="chat-messages" class="chat-messages">
+            <!-- Messages will be dynamically added here -->
+          </div>
+          <div class="chat-suggestions">
+            <h3>Try asking about:</h3>
+            <div class="suggestion-buttons">
+              <button class="suggestion-btn" data-question="How do I build credit as a student?">
+                💳 Building Credit
+              </button>
+              <button class="suggestion-btn" data-question="How much should I save each month?">
+                💰 Monthly Savings
+              </button>
+              <button class="suggestion-btn" data-question="Should I invest as a college student?">
+                📈 Student Investing
+              </button>
+              <button class="suggestion-btn" data-question="What's an emergency fund?">
+                🚨 Emergency Fund
+              </button>
+              <button class="suggestion-btn" data-question="What apps help with budgeting?">
+                📱 Budgeting Apps
+              </button>
+              <button class="suggestion-btn" data-question="What's an index fund?">
+                📊 Index Funds
+              </button>
+            </div>
+            <p class="demo-notice">
+              This is a preview of DeepDive AI. The full version will answer any financial question you have!
+            </p>
+          </div>
         </div>
       </div>
     </div>
